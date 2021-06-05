@@ -1,0 +1,186 @@
+swagger: '2.0'
+info:
+  description: Documentation of the list of APIs used for ContactManager
+  version: 1.0.0
+  title: ContactManager
+  contact:
+    name: Avijit Kundu
+    email: k.avijit01@gmail.com
+host: 'localhost:8080'
+basePath: /v1
+paths:
+  /contacts:
+    get:
+      tags:
+        - Contacts
+      summary: Get List of Active Contacts
+      description: ''
+      operationId: getContactList
+      produces:
+        - application/json
+      parameters:
+        - name: security-context
+          in: header
+          required: false
+          description: security token
+          type: string
+      responses:
+        '200':
+          description: The result of contacts
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Contact'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '405':
+          description: Method not Allowed (unsupported HTTP Method)
+        '406':
+          description: Not Acceptable (media type requested via 'Accept' cannot be served)
+        '415':
+          description: Unsupported media type (media type used in the payload)
+        '500':
+          description: Internal Server Error
+        default:
+          description: Unexpected error
+    post:
+      tags:
+        - Contacts
+      summary: Add a new Contact to Contact List
+      description: ''
+      operationId: addContact
+      consumes:
+        - application/json
+      produces:
+        - application/xml
+      parameters:
+        - in: body
+          name: body
+          description: Contact to be added to contact list
+          required: true
+          schema:
+            $ref: '#/definitions/Contact'
+      responses:
+        '202':
+          description: Contact added success
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '405':
+          description: Method not Allowed (unsupported HTTP Method)
+        '406':
+          description: Not Acceptable (media type requested via 'Accept' cannot be served)
+        '415':
+          description: Unsupported media type (media type used in the payload)
+        '500':
+          description: Internal Server Error
+        default:
+          description: Unexpected error
+    put:
+      tags:
+        - Contacts
+      summary: Modify a new Contact from Contact List
+      description: ''
+      operationId: modifyContact
+      consumes:
+        - application/json
+      produces:
+        - application/xml
+      parameters:
+        - in: body
+          name: body
+          description: Contact to be Modified from contact list
+          required: true
+          schema:
+            $ref: '#/definitions/Contact'
+      responses:
+        '202':
+          description: Contact added success
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '405':
+          description: Method not Allowed (unsupported HTTP Method)
+        '406':
+          description: Not Acceptable (media type requested via 'Accept' cannot be served)
+        '415':
+          description: Unsupported media type (media type used in the payload)
+        '500':
+          description: Internal Server Error
+        default:
+          description: Unexpected error
+  '/contacts/{contactId}':
+    delete:
+      tags:
+        - Contacts
+      summary: Delete a Contact from Contact List
+      description: ''
+      operationId: deleteContact
+      consumes:
+        - application/json
+      produces:
+        - application/xml
+      parameters:
+        - in: path
+          name: contactId
+          description: Contact to be Deleted from contact list
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Contact to be Modified from contact list
+          required: true
+          schema:
+            $ref: '#/definitions/Contact'
+      responses:
+        '202':
+          description: Contact added success
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '405':
+          description: Method not Allowed (unsupported HTTP Method)
+        '406':
+          description: Not Acceptable (media type requested via 'Accept' cannot be served)
+        '415':
+          description: Unsupported media type (media type used in the payload)
+        '500':
+          description: Internal Server Error
+        default:
+          description: Unexpected error
+definitions:
+  Contact:
+    type: object
+    properties:
+      contactId:
+        type: string
+        description: Contact Id
+      firstname:
+        type: string
+        description: Contact First Name
+      lastname:
+        type: string
+        description: Contact First Name
+      email:
+        type: string
+        description: Contact First Name
+      phone:
+        type: string
+        description: Contact First Name
+      status:
+        type: string
+        description: Contact First Name
+    title: Contact
