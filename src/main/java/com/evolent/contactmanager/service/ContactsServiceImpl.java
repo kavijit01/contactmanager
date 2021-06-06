@@ -1,6 +1,7 @@
 package com.evolent.contactmanager.service;
 
 import com.evolent.contactmanager.entity.ContactDao;
+import com.evolent.contactmanager.exception.BusinessException;
 import com.evolent.contactmanager.mapper.ContactsMapper;
 import com.evolent.contactmanager.repository.ContactsRepository;
 import com.evolent.types.Contact;
@@ -43,9 +44,9 @@ public class ContactsServiceImpl implements ContactsService {
         if(optional.isPresent()){
                 ContactDao modifiedContactDao = contactsRepository.save(contactsMapper.toContactDao(contact));
                 return contactsMapper.toContact(modifiedContactDao);
+        }else{
+            throw new BusinessException("500","Invalid Contact : Please check with system Admin");
         }
-
-        return null;
 
     }
 

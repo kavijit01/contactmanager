@@ -183,3 +183,13 @@ definitions:
         type: string
         description: Contact First Name
     title: Contact
+  ErrorReport:
+    type: object
+    properties:
+      errorCode:
+        type: string
+        description: Error Code
+      errorMessage:
+        type: string
+        description: Error Message
+    title: ErrorMessage
