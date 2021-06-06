@@ -7,4 +7,6 @@ CREATE TABLE CONTACTS (
 );
 
 INSERT INTO CONTACTS (CONTACT_ID,FIRST_NAME, LAST_NAME, EMAIL,PHONE) VALUES
-  ('1','Avijit', 'Kundu', 'k.avijit01@gmail.com','9051797711');
+  ('1','Avijit', 'Kundu', 'k.avijit01@gmail.com','9051797711','Active');
+
+  commit;
