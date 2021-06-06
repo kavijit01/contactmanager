@@ -11,4 +11,8 @@ import java.util.List;
 public interface ContactsMapper {
 
     List<Contact> toContacts(List<ContactDao> contactDaos);
+
+    Contact toContact(ContactDao contactDao);
+
+    ContactDao toContactDao(Contact contact);
 }

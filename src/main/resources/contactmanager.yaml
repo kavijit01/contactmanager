@@ -56,17 +56,19 @@ paths:
       consumes:
         - application/json
       produces:
-        - application/xml
+        - application/json
       parameters:
         - in: body
-          name: body
+          name: contact
           description: Contact to be added to contact list
           required: true
           schema:
             $ref: '#/definitions/Contact'
       responses:
-        '202':
+        '200':
           description: Contact added success
+          schema:
+            $ref: '#/definitions/Contact'
         '400':
           description: Bad Request
         '401':
@@ -92,17 +94,19 @@ paths:
       consumes:
         - application/json
       produces:
-        - application/xml
+        - application/json
       parameters:
         - in: body
-          name: body
+          name: contact
           description: Contact to be Modified from contact list
           required: true
           schema:
             $ref: '#/definitions/Contact'
       responses:
-        '202':
+        '200':
           description: Contact added success
+          schema:
+            $ref: '#/definitions/Contact'
         '400':
           description: Bad Request
         '401':
@@ -119,7 +123,6 @@ paths:
           description: Internal Server Error
         default:
           description: Unexpected error
-  '/contacts/{contactId}':
     delete:
       tags:
         - Contacts
@@ -131,11 +134,6 @@ paths:
       produces:
         - application/xml
       parameters:
-        - in: path
-          name: contactId
-          description: Contact to be Deleted from contact list
-          required: true
-          type: string
         - in: body
           name: body
           description: Contact to be Modified from contact list
@@ -143,8 +141,8 @@ paths:
           schema:
             $ref: '#/definitions/Contact'
       responses:
-        '202':
-          description: Contact added success
+        '204':
+          description: Contact deleted successfully
         '400':
           description: Bad Request
         '401':
@@ -166,7 +164,8 @@ definitions:
     type: object
     properties:
       contactId:
-        type: string
+        type: integer
+        format: int32
         description: Contact Id
       firstname:
         type: string
