@@ -1,2 +1,2 @@
 # contactmanager
-Web Application for Contact Management System with SpringBoot and Thymeleaf
+SpringBoot API to expose contactmanagement rest apis
